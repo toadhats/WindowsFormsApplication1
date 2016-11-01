@@ -45,6 +45,8 @@ namespace WindowsFormsApplication1
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -68,6 +70,7 @@ namespace WindowsFormsApplication1
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.SaveButton);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button7);
@@ -182,6 +185,16 @@ namespace WindowsFormsApplication1
     "s (*.*)|*.*";
             this.openFileDialog1.Title = "load an image";
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(735, 33);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 9;
+            this.SaveButton.Text = "save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +229,8 @@ namespace WindowsFormsApplication1
         private Button button7;
         private Button button8;
         private Button button9;
+        private Button SaveButton;
+        private SaveFileDialog saveFileDialog1;
     }
 }
 

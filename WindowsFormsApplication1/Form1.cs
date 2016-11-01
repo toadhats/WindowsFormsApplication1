@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        // reset image or fill image box with a colour
+        // reset image or fill image box with a colour. right click doesn't actually work lol
         private void button2_Click(Object sender, EventArgs e)
         {
             if (e is MouseEventArgs && ((MouseEventArgs) e).Button == MouseButtons.Right)
@@ -74,6 +74,7 @@ namespace WindowsFormsApplication1
             var img = pictureBox1.Image;
             var bmp = new Bitmap(img);
             int x, y;
+            Cursor.Current = Cursors.WaitCursor;
             for (x = 0; x < bmp.Width - 1; ++x)
             {
                 for (y = 0; y < bmp.Height - 1; ++y)
@@ -92,6 +93,7 @@ namespace WindowsFormsApplication1
                 }
             }
             pictureBox1.Image = bmp;
+            Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
@@ -105,6 +107,7 @@ namespace WindowsFormsApplication1
             var bmp = new Bitmap(img);
             int x, y;
             var random = new Random();
+            Cursor.Current = Cursors.WaitCursor;
             for (x = 0; x < bmp.Width - 1; ++x)
             {
                 for (y = 0; y < bmp.Height - 1; ++y)
@@ -124,6 +127,7 @@ namespace WindowsFormsApplication1
                 }
             }
             pictureBox1.Image = bmp;
+            Cursor.Current = Cursors.Default;
         }
 
         // Averages out the colour of each pixel based on 4 neighbours - ie a shitty blur
@@ -133,6 +137,7 @@ namespace WindowsFormsApplication1
             var bmp = new Bitmap(img);
             int x, y;
             var random = new Random();
+            Cursor.Current = Cursors.WaitCursor;
             // bmp.SetPixel(0, 0, Color.Cyan);  // find out how the pixels are indexed lol
             for (x = 0; x < bmp.Width - 1; ++x)
             {
@@ -161,6 +166,7 @@ namespace WindowsFormsApplication1
                 }
             }
             pictureBox1.Image = bmp;
+            Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
@@ -283,7 +289,41 @@ namespace WindowsFormsApplication1
 
             return Color.FromArgb(rgb.r, rgb.g, rgb.b);
         }
-       
+
+        private void SaveButton_Click(Object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "jpeg|*.jpg|bitmap|*.bmp|gif|*.gif";
+            saveFileDialog1.Title = "save image";
+
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.FileStream fs = (System.IO.FileStream) saveFileDialog1.OpenFile();
+                // FilterIndex starts from 1
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        pictureBox1.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Jpeg);
+                        break;
+
+                    case 2:
+                        pictureBox1.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Bmp);
+                        break;
+
+                    case 3:
+                        pictureBox1.Image.Save(fs,
+                           System.Drawing.Imaging.ImageFormat.Gif);
+                        break;
+                }
+
+                fs.Close();
+            }
+
+        }
     }
 
     public class NeighbourSet
