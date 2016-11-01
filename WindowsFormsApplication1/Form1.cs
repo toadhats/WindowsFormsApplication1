@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -323,6 +324,35 @@ namespace WindowsFormsApplication1
                 fs.Close();
             }
 
+        }
+
+        private void button10_Click(Object sender, EventArgs e)
+        {
+            var img = pictureBox1.Image;
+            var bmp = new Bitmap(img);
+            int x, y;
+            var timer = new Stopwatch();
+            timer.Start();
+            Cursor.Current = Cursors.WaitCursor;
+            for (y = 0; y < bmp.Height - 1; ++y)
+            {
+                for (x = 0; x < bmp.Width - 1; ++x)
+                {
+                    var random = new Random();
+                    Color pixelColor = bmp.GetPixel(x, y);
+                    var rMod = timer.ElapsedTicks % 32; ;
+                    var gMod = timer.ElapsedTicks % 48;
+                    var bMod = timer.ElapsedTicks * timer.ElapsedMilliseconds % 64;
+                   Color newColor = Color.FromArgb(
+                        Convert.ToInt32(Math.Abs(pixelColor.R + (random.Next(1, 25) - rMod)) % 255.0 + 1),
+                        Convert.ToInt32(Math.Abs(pixelColor.G + (random.Next(1, 25) - gMod)) % 255.0 + 1),
+                        Convert.ToInt32(Math.Abs(pixelColor.B + (random.Next(1, 25) - bMod)) % 255.0 + 1));
+                    bmp.SetPixel(x, y, newColor);
+                }
+            }
+            timer.Stop();
+            pictureBox1.Image = bmp;
+            Cursor.Current = Cursors.Default;
         }
     }
 

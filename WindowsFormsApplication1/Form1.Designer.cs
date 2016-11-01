@@ -34,6 +34,7 @@ namespace WindowsFormsApplication1
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -45,8 +46,8 @@ namespace WindowsFormsApplication1
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.SaveButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -70,6 +71,7 @@ namespace WindowsFormsApplication1
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button10);
             this.panel2.Controls.Add(this.SaveButton);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button8);
@@ -84,6 +86,16 @@ namespace WindowsFormsApplication1
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(813, 60);
             this.panel2.TabIndex = 1;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(735, 33);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 9;
+            this.SaveButton.Text = "save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // button9
             // 
@@ -185,15 +197,15 @@ namespace WindowsFormsApplication1
     "s (*.*)|*.*";
             this.openFileDialog1.Title = "load an image";
             // 
-            // SaveButton
+            // button10
             // 
-            this.SaveButton.Location = new System.Drawing.Point(735, 33);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 9;
-            this.SaveButton.Text = "save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.button10.Location = new System.Drawing.Point(451, 4);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 10;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form1
             // 
@@ -231,6 +243,7 @@ namespace WindowsFormsApplication1
         private Button button9;
         private Button SaveButton;
         private SaveFileDialog saveFileDialog1;
+        private Button button10;
     }
 }
 
