@@ -16,7 +16,7 @@ Swaps 2 random colours in the image
 Does button 6 69 times
 
 ##Button 420
-Does button 6 420 times. S l o w
+Does button 6 420 times. S l o w (will probably crash idk)
 
 ##革命
 Finds the colours that own the most pixels and colours that own the least and they all trade places
